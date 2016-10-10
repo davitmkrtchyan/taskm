@@ -1,0 +1,32 @@
+.alert{
+    display: none;
+    position : fixed;
+    top : -150px;
+    width: 300px;
+    z-index: 99999;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+#deleteForm, #editForm, #restoreHistory{
+    float: right;
+}
+.btnBlue{
+    background-color: #223b82;
+    border-color: #223b82;
+}
+.btnBlue:hover{
+    background-color: #2442a4;
+    border-color: #2442a4;
+}
+.btnBlue:active{
+    background-color: #223b82;
+    border-color: #223b82;
+}
+.btnBlue:visited{
+    background-color: #223b82;
+    border-color: #223b82;
+}
