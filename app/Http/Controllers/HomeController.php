@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 
 class HomeController extends Controller
 {
@@ -67,7 +68,7 @@ class HomeController extends Controller
 
         return redirect('/task');
     }
-    
+
 
     public function delete($id){
         Task::findOrFail($id)->delete();
@@ -116,10 +117,12 @@ class HomeController extends Controller
     public function chat()
     {
         $messages = DB::table('messages')->orderBy('created_at', 'desc')->get();
-//        where('sender_id', '=', $this->user_id)
-//            ->get();
 
-            return view('chat', compact(['messages']));
+        for($i = 0; $i < count($messages); $i++){
+            $messages[$i]->message = Crypt::decrypt($messages[$i]->message);
+        }
+
+        return view('chat', compact(['messages']));
 
 
     }

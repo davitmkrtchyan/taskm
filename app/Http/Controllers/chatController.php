@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Hash;
 class chatController extends Controller {
 
     private $user_id;
-
     private $user_name;
 
 	public function __construct()
@@ -30,6 +29,8 @@ class chatController extends Controller {
         $message_tb->sender_id = $this->user_id;
         $message_tb->sender_name = Request::input('user');
         $message_tb->message = Crypt::encrypt(Request::input('message'));
+
+//        $message_tb->message = Crypt::decrypt($message_tb->message);
 
         $message_tb->save();
 		$redis->publish('message', json_encode($data));
