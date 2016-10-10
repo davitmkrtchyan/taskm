@@ -16,6 +16,7 @@
         .message-div{
             border-bottom: 1px solid gainsboro;
         }
+
     </style>
 
     <div class="container spark-screen">
