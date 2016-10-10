@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 class chatController extends Controller {
 
     private $user_id;
+
     private $user_name;
 
 	public function __construct()
