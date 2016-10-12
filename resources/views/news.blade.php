@@ -17,6 +17,7 @@
         </div>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <img src="{{ URL::asset('images/png/42.gif')}}" alt="preloader" id="preloader-article">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -44,7 +45,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" name="Publish" value="Publish" form="addArticle">
+                        <input type="submit" class="btn btn-primary" name="Publish" value="Publish" form="addArticle" id="publish-article">
                     </div>
                 </div>
             </div>
@@ -57,13 +58,13 @@
                             <b>{{ $article->name }}</b>
                         </a>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="description-article">
                         <a href="{{ $article->url }}" target="_blank">
                             {{ $article->description }}
                         </a>
                     </div>
-                    <div class="col-md-12 article-img" target="_blank">
-                        <a href="{{ $article->url }}">
+                    <div class="col-md-12 article-img">
+                        <a href="{{ $article->url }}" target="_blank">
                             <img src="{{ URL::asset('images/'.$article->img_name) }}" alt="{{ $article->img_name }}" />
                         </a>
                     </div>

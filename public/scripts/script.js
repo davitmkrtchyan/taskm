@@ -12,4 +12,7 @@ $(document).ready(function(){
             top: "-100px"
         }, 400, "linear")}, 4000);
 
+    $('#publish-article').click(function(){
+        $('#preloader-article').css("display", "inline-block");
+    });
 });
