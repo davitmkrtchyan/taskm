@@ -19,15 +19,16 @@ class chatController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
-        $this->user_id = Auth::id();
+        $this->user_id = Auth::user()->id;
+        $this->user_name = Auth::user()->name;
 	}
 
 	public function sendMessage(){
 		$redis = LRedis::connection();
-		$data = ['message' => Request::input('message'), 'user' => Request::input('user')];
+		$data = ['message' => Request::input('message'), 'user' => $this->user_name];
         $message_tb = new Message();
         $message_tb->sender_id = $this->user_id;
-        $message_tb->sender_name = Request::input('user');
+        $message_tb->sender_name = $this->user_name;
         $message_tb->message = Crypt::encrypt(Request::input('message'));
 
 //        $message_tb->message = Crypt::decrypt($message_tb->message);

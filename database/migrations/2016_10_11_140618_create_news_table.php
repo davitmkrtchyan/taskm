@@ -18,6 +18,8 @@ class CreateNewsTable extends Migration
             $table->text('description');
             $table->text('img_name');
             $table->text('url');
+            $table->string('author_name');
+            $table->integer('author_id');
             $table->timestamps();
         });
     }

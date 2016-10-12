@@ -131,8 +131,7 @@ class HomeController extends Controller
 
     public function news()
     {
-
-        $news = DB::table('news')->orderBy('created_at', 'desc')->get();
+        $news = DB::table('news')->orderBy('created_at', 'desc')->paginate(9);
 
         return view('news', compact('news'));
 
@@ -143,6 +142,7 @@ class HomeController extends Controller
         $grabzIt = new GrabzItClient("MDVhNmEzOGFjN2FkNDdiZTg4Y2QzMWZmMDE0M2NiZDU=", "Fgg/Cz96DT90dj8/Pz8/Pz8/eT9YPwI3RGU/BB44bhs=");
 //print_r($request->url);
 //        die();
+
         // To take a image screenshot
         $grabzIt->URLToImage($request->url);
 

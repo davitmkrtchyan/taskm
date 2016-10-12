@@ -4,12 +4,16 @@
 
 
     <div class="container">
-
         <div class="col-md-12">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                New article
-            </button>
+            <div class="col-md-6">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    New article
+                </button>
+            </div>
+            <div class="col-md-6 text-right">
+                {{ $news->links() }}
+            </div>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -49,16 +53,16 @@
             <div class="col-md-4 news-div text-center">
                 <div class="col-md-10 col-md-offset-1 news-div-inner">
                     <div class="col-md-12">
-                        <a href="{{ $article->url }}">
+                        <a href="{{ $article->url }}" target="_blank">
                             <b>{{ $article->name }}</b>
                         </a>
                     </div>
                     <div class="col-md-12">
-                        <a href="{{ $article->url }}">
+                        <a href="{{ $article->url }}" target="_blank">
                             {{ $article->description }}
                         </a>
                     </div>
-                    <div class="col-md-12 article-img">
+                    <div class="col-md-12 article-img" target="_blank">
                         <a href="{{ $article->url }}">
                             <img src="{{ URL::asset('images/'.$article->img_name) }}" alt="{{ $article->img_name }}" />
                         </a>

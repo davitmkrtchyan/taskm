@@ -4,6 +4,7 @@
     {{--<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>--}}
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+    <script src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'></script>
 
     <style type="text/css">
         #messages{
@@ -23,7 +24,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Chat Message Module</div>
+                    <div class="panel-heading">Chat is Here</div>
 
                     <div class="panel-body">
 
@@ -42,7 +43,6 @@
                             <div class="col-md-12" >
                                 <form action="sendmessage" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                                    <input type="hidden" name="user" value="{{ Auth::user()->name }}" >
                                     <textarea class="form-control msg"></textarea>
                                     <br/>
                                     <input type="button" value="Send" class="btn btn-success send-msg">
@@ -59,6 +59,9 @@
     <script>
         var socket = io.connect('http://localhost:8890');
 
+        var bar = new RegExp("/bar/i");
+        var voxj = new RegExp("voxj");
+
         socket.on('message', function (data) {
             var currentdate = new Date();
             var datetime = currentdate.getFullYear() + "-"
@@ -69,6 +72,27 @@
                     + currentdate.getSeconds();
             data = jQuery.parseJSON(data);
             $( "#messages" ).prepend( "<strong>"+data.user+"</strong><p class='message-div'>"+data.message+"<span class='pull-right'>" + datetime + "</span></p>" );
+
+            /*Manipulating title*/
+            var name = data.user;
+            var str = data.message;
+
+            $("title").html(name+ ": " + str);
+            setTimeout(function(){
+                $("title").html("Laravel")
+            }, 4500);
+            /*End title manipulating*/
+
+            /*Searching Greating*/
+            n = str.search(/bar/i);
+            m = str.search(/voxj/i);
+            if(n != "-1" || m != "-1"){
+                $.playSound('/sounds/CoolNotification');
+            }else{
+                $.playSound('/sounds/Maramba0');
+            }
+            /*End Searching greeting*/
+
         });
 
         $(".send-msg").click(function(e){
