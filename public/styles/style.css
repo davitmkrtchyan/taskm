@@ -30,3 +30,16 @@
     background-color: #223b82;
     border-color: #223b82;
 }
+
+.news-div{
+    /*border: 1px solid lightgray;*/
+    border-radius: 6px;
+    margin: 10px 0;
+}
+.news-div-inner{
+    border: 1px solid lightgray;
+    border-radius: 7px;
+}
+.article-img{
+
+}

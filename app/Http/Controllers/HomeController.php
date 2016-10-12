@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\News;
 use App\Task;
 use App\User;
 use App\Message;
+use GrabzItClient;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -124,6 +126,40 @@ class HomeController extends Controller
 
         return view('chat', compact(['messages']));
 
+
+    }
+
+    public function news()
+    {
+
+        $news = DB::table('news')->orderBy('created_at', 'desc')->get();
+
+        return view('news', compact('news'));
+
+    }
+
+    public function newsAdd(Request $request)
+    {
+        $grabzIt = new GrabzItClient("MDVhNmEzOGFjN2FkNDdiZTg4Y2QzMWZmMDE0M2NiZDU=", "Fgg/Cz96DT90dj8/Pz8/Pz8/eT9YPwI3RGU/BB44bhs=");
+//print_r($request->url);
+//        die();
+        // To take a image screenshot
+        $grabzIt->URLToImage($request->url);
+
+        $current_time = time();
+
+        $filepath = $_SERVER['DOCUMENT_ROOT']."/images/".$current_time.".jpg";
+        $grabzIt->SaveTo($filepath);
+
+
+        $news = new News;
+        $news->name = $request->name;
+        $news->description = $request->description;
+        $news->url = $request->url;
+        $news->img_name = $current_time.'.jpg';
+        $news->save();
+
+        return redirect('/news');
 
     }
 }

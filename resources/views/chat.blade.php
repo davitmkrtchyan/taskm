@@ -8,7 +8,7 @@
     <style type="text/css">
         #messages{
             border: 1px solid gainsboro;
-            height: 300px;
+            height: 425px;
             margin-bottom: 8px;
             overflow-x: hidden;
             padding: 5px;

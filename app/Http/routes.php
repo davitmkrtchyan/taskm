@@ -26,6 +26,8 @@ Route::post('/create', 'HomeController@create');
 
 Route::delete('/task/delete/{id}', 'HomeController@delete');
 
+Route::get('/news', 'HomeController@news');
+Route::post('/news/add', 'HomeController@newsAdd');
 
 Route::get('/history', 'HomeController@history');
 
