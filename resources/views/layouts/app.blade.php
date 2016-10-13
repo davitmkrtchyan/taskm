@@ -1,3 +1,6 @@
+<?php
+header('X-Frame-Options: GOFORIT');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +60,8 @@
                         <li><a href="{{ url('/task') }}">Tasks</a></li>
                         <li><a href="{{ url('/chat') }}">Chat</a></li>
                         <li><a href="{{ url('/news') }}">News</a></li>
-                        <li><a href="{{ url('/games') }}">Games</a></li>
+                        <li><a href="{{ url('/music') }}">Music</a></li>
+                        {{--<li><a href="{{ url('/games') }}">Games</a></li>--}}
                         <li><a href="{{ url('/history') }}">History</a></li>
                     @endif
                 </ul>

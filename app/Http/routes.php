@@ -29,6 +29,8 @@ Route::delete('/task/delete/{id}', 'HomeController@delete');
 Route::get('/news', 'HomeController@news');
 Route::post('/news/add', 'HomeController@newsAdd');
 
+Route::get('/music', 'HomeController@music');
+
 Route::get('/history', 'HomeController@history');
 
 Route::delete('/history/clear', 'HomeController@clearHistory');

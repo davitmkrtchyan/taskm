@@ -160,6 +160,10 @@ class HomeController extends Controller
         $news->save();
 
         return redirect('/news');
+    }
 
+    public function music()
+    {
+        return view('music');
     }
 }

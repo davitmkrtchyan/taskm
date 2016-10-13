@@ -59,3 +59,11 @@
     z-index: 999;
     transform: translate(-50%, -50%);
 }
+
+#frame-container{
+    position: relative;
+}
+#music-frame{
+    margin: 0 auto;
+    display: block;
+}

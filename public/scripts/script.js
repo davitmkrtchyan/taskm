@@ -15,4 +15,9 @@ $(document).ready(function(){
     $('#publish-article').click(function(){
         $('#preloader-article').css("display", "inline-block");
     });
+
+    $("#latina").click(function(){
+        $("#music-frame").attr("src", "valer");
+    });
+
 });
